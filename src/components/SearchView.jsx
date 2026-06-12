@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { domains } from "../data/bankingData";
+import { highlight } from "../store";
 
 export default function SearchView({ query, allTopics, allTerms, navigate }) {
   const [results, setResults] = useState({ topics: [], terms: [] });
@@ -44,13 +44,13 @@ export default function SearchView({ query, allTopics, allTerms, navigate }) {
             {results.terms.map((t, i) => (
               <li key={i} className="term-result-card">
                 <div className="term-result-top">
-                  <span className="term-abbr">{t.term}</span>
-                  <span className="term-full">{t.full}</span>
+                  <span className="term-abbr">{highlight(t.term, query)}</span>
+                  <span className="term-full">{highlight(t.full, query)}</span>
                   <span className="term-domain" style={{ color: t.domainColor }}>
                     {t.domainName} › {t.topicName}
                   </span>
                 </div>
-                <p>{t.desc}</p>
+                <p>{highlight(t.desc, query)}</p>
               </li>
             ))}
           </ul>
@@ -72,8 +72,8 @@ export default function SearchView({ query, allTopics, allTerms, navigate }) {
                     <span style={{ color: t.domainColor }}>{t.domainName}</span>
                     <ArrowRight size={16} aria-hidden="true" className="arrow-icon" />
                   </div>
-                  <h3>{t.name}</h3>
-                  <p>{t.summary}</p>
+                  <h3>{highlight(t.name, query)}</h3>
+                  <p>{highlight(t.summary, query)}</p>
                 </button>
               </li>
             ))}

@@ -1,17 +1,6 @@
-import { useState } from "react";
 import { Search, BookOpen, GraduationCap, LayoutGrid } from "lucide-react";
 
-export default function Navbar({ navigate, view }) {
-  const [searchVal, setSearchVal] = useState("");
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchVal.trim()) {
-      navigate("search", { query: searchVal.trim() });
-      setSearchVal("");
-    }
-  };
-
+export default function Navbar({ navigate, view, onOpenPalette }) {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="nav-inner">
@@ -19,21 +8,13 @@ export default function Navbar({ navigate, view }) {
           <BookOpen size={20} aria-hidden="true" />
           <span>BankingLearn</span>
         </button>
-        <form className="nav-search" onSubmit={handleSearch} role="search">
-          <label htmlFor="global-search" className="sr-only">Search banking terms</label>
-          <input
-            id="global-search"
-            type="search"
-            placeholder="Search any term — NPA, SWIFT, Shadow Credit..."
-            value={searchVal}
-            onChange={(e) => setSearchVal(e.target.value)}
-            autoComplete="off"
-          />
-          <button type="submit" aria-label="Search">
-            <Search size={16} aria-hidden="true" />
-            <span>Search</span>
-          </button>
-        </form>
+
+        <button className="nav-search-trigger" onClick={onOpenPalette} aria-label="Open quick search">
+          <Search size={16} aria-hidden="true" />
+          <span className="nav-search-text">Search any term — NPA, SWIFT, MCLR…</span>
+          <kbd className="nav-kbd">Ctrl K</kbd>
+        </button>
+
         <div className="nav-links" role="list">
           <button
             role="listitem"
