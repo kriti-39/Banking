@@ -1,0 +1,15 @@
+{
+  "name": "BankingLearn — Banking Dictionary",
+  "short_name": "BankingLearn",
+  "description": "Learn Indian banking from scratch — 86 topics, 760+ terms, vendors, and PMO relevance. A searchable banking dictionary.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060d0a",
+  "theme_color": "#060d0a",
+  "icons": [
+    { "src": "/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
