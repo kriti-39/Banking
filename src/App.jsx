@@ -5,6 +5,7 @@ import DomainView from "./components/DomainView";
 import TopicView from "./components/TopicView";
 import SearchView from "./components/SearchView";
 import QuizView from "./components/QuizView";
+import BankMap from "./components/BankMap";
 import Navbar from "./components/Navbar";
 import CommandPalette from "./components/CommandPalette";
 import { StoreProvider } from "./store";
@@ -52,6 +53,7 @@ export default function App() {
           {view === "search" && (
             <SearchView query={searchQuery} allTopics={allTopics} allTerms={allTerms} navigate={navigate} />
           )}
+          {view === "map" && <BankMap />}
           {view === "quiz" && <QuizView allTopics={allTopics} navigate={navigate} />}
         </main>
         <CommandPalette

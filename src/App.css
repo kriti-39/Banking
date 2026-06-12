@@ -851,6 +851,77 @@ main {
 /* ─── SEARCH HIGHLIGHT ───────────────────────────────────── */
 mark.hl { background: rgba(16,185,129,.28); color: var(--text); border-radius: 3px; padding: 0 2px; }
 
+/* ─── BANK MAP (org flowmap) ─────────────────────────────── */
+.bankmap { max-width: 760px; margin: 0 auto; }
+.bankmap-head { margin-bottom: var(--sp-6); }
+.bankmap-head h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: var(--sp-2); }
+.bankmap-head p { color: var(--text-2); max-width: 72ch; line-height: 1.6; font-size: 0.95rem; }
+.bankmap-head strong { color: var(--text); }
+
+.org-root { display: flex; flex-direction: column; align-items: center; }
+.org-root-node {
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
+  background: var(--surface-2);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: var(--sp-3) var(--sp-5);
+  max-width: 520px;
+  color: var(--accent-h);
+}
+.org-root-node > svg { flex-shrink: 0; }
+.org-root-node strong { display: block; color: var(--text); font-size: 0.95rem; }
+.org-root-node span { display: block; color: var(--text-2); font-size: 0.8rem; line-height: 1.45; margin-top: 2px; }
+.org-root-stem { width: 2px; height: var(--sp-5); background: var(--border); }
+
+.org-depts { display: flex; flex-direction: column; gap: var(--sp-3); }
+.org-dept {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--dept);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 150ms ease;
+}
+.org-dept:hover { border-color: var(--dept); }
+.org-dept-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  text-align: left;
+  padding: var(--sp-4);
+  min-height: var(--touch);
+}
+.org-dept-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dept); flex-shrink: 0; }
+.org-dept-text { flex: 1; min-width: 0; }
+.org-dept-text strong { display: block; font-size: 0.98rem; color: var(--text); }
+.org-dept-what { display: block; font-size: 0.82rem; color: var(--text-2); line-height: 1.45; margin-top: 2px; }
+.org-dept-count {
+  background: var(--surface-3);
+  color: var(--dept);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 2px 9px;
+  flex-shrink: 0;
+}
+.org-chev { color: var(--text-2); flex-shrink: 0; }
+
+.org-verticals {
+  margin: 0 var(--sp-4) var(--sp-4) var(--sp-5);
+  padding: var(--sp-1) 0 0 var(--sp-4);
+  border-left: 2px dashed var(--border);
+  display: flex;
+  flex-direction: column;
+}
+.org-vertical { display: flex; gap: var(--sp-2); align-items: flex-start; padding: var(--sp-2) 0; }
+.org-v-icon { color: var(--dept); flex-shrink: 0; margin-top: 3px; opacity: 0.85; }
+.org-v-text { min-width: 0; }
+.org-v-text strong { display: block; font-size: 0.88rem; color: var(--text); }
+.org-v-text span { display: block; font-size: 0.8rem; color: var(--text-2); line-height: 1.5; margin-top: 1px; }
+
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 640px) {
   main {
@@ -894,6 +965,11 @@ mark.hl { background: rgba(16,185,129,.28); color: var(--text); border-radius: 3
   .quick-chip { scroll-snap-align: start; flex-shrink: 0; }
 
   .totd-card { padding: var(--sp-4) var(--sp-5); }
+
+  .bankmap-head h1 { font-size: 1.3rem; }
+  .org-root-node { max-width: none; padding: var(--sp-3) var(--sp-4); }
+  .org-verticals { margin-left: var(--sp-3); }
+
   .quiz-card { padding: var(--sp-5) var(--sp-4); }
   .quiz-question { font-size: 1.05rem; }
   .quiz-actions { flex-direction: column; align-items: stretch; }

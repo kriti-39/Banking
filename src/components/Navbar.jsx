@@ -1,4 +1,4 @@
-import { Search, BookOpen, GraduationCap, LayoutGrid } from "lucide-react";
+import { Search, BookOpen, GraduationCap, LayoutGrid, Network } from "lucide-react";
 
 export default function Navbar({ navigate, view, onOpenPalette }) {
   return (
@@ -24,6 +24,15 @@ export default function Navbar({ navigate, view, onOpenPalette }) {
           >
             <LayoutGrid size={15} aria-hidden="true" />
             <span>Domains</span>
+          </button>
+          <button
+            role="listitem"
+            className={view === "map" ? "active" : ""}
+            onClick={() => navigate("map")}
+            aria-current={view === "map" ? "page" : undefined}
+          >
+            <Network size={15} aria-hidden="true" />
+            <span>Bank Map</span>
           </button>
           <button
             role="listitem"
