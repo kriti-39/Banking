@@ -839,8 +839,9 @@ mark.hl { background: rgba(16,185,129,.28); color: var(--text); border-radius: 3
   .nav-links { gap: var(--sp-1); }
   .nav-links button { padding: 0 var(--sp-2); }
 
-  .hero-section { padding: var(--sp-6) 0 var(--sp-5); }
-  .hero-section p { font-size: 0.98rem; }
+  .hero-section { padding: var(--sp-5) 0 var(--sp-4); }
+  .hero-section p { display: none; }   /* hide long intro on phones — domains show sooner */
+  .hero-section h1 { margin-bottom: var(--sp-4); }
   .domains-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
   .terms-grid { grid-template-columns: 1fr 1fr; }
   .vendor-item { flex-direction: column; gap: var(--sp-1); }
