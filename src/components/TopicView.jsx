@@ -77,10 +77,19 @@ export default function TopicView({ topic, navigate, focusTerm }) {
 
       <section className="topic-section" aria-labelledby="how-it-works-heading">
         <h2 id="how-it-works-heading">How It Works</h2>
-        <ol className="how-it-works">
-          {topic.howItWorks?.map((step, i) => (
-            <li key={i}>{step}</li>
-          ))}
+        <ol className="flow">
+          {topic.howItWorks?.map((step, i) => {
+            const last = i === topic.howItWorks.length - 1;
+            return (
+              <li className="flow-step" key={i}>
+                <div className="flow-marker" aria-hidden="true">
+                  <span className="flow-num" style={{ background: topic.domainColor }}>{i + 1}</span>
+                  {!last && <span className="flow-line" style={{ background: topic.domainColor }} />}
+                </div>
+                <div className="flow-body">{step}</div>
+              </li>
+            );
+          })}
         </ol>
       </section>
 

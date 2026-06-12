@@ -390,21 +390,46 @@ main {
 }
 .section-icon { flex-shrink: 0; }
 
-.how-it-works {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: var(--sp-5) var(--sp-5) var(--sp-5) 40px;
+/* How It Works — vertical flowchart */
+.flow {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
-  counter-reset: steps;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-6) var(--sp-5);
 }
-.how-it-works li {
+.flow-step { display: flex; gap: var(--sp-4); align-items: stretch; }
+.flow-marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.flow-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--surface), 0 0 0 5px var(--border);
+}
+.flow-line {
+  width: 2px;
+  flex: 1 1 auto;
+  min-height: 14px;
+  margin-top: 4px;
+  border-radius: 2px;
+  opacity: 0.4;
+}
+.flow-body {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0 var(--sp-5);
   color: var(--text-2);
   line-height: 1.65;
   max-width: 72ch;
 }
-.how-it-works li::marker { color: var(--accent-h); font-weight: 700; }
+.flow-step:last-child .flow-body { padding-bottom: 0; }
 
 /* Terms grid */
 .terms-hint { color: var(--text-muted); font-size: 0.82rem; margin-bottom: var(--sp-3); }
@@ -839,10 +864,10 @@ mark.hl { background: rgba(16,185,129,.28); color: var(--text); border-radius: 3
   .nav-links { gap: var(--sp-1); }
   .nav-links button { padding: 0 var(--sp-2); }
 
-  .hero-section { padding: var(--sp-4) 0 var(--sp-3); }
+  .hero-section { padding: var(--sp-5) 0 var(--sp-2); text-align: left; }
   .hero-section p { display: none; }      /* hide long intro on phones */
   .hero-stats { display: none; }          /* stats are decorative — daily users don't need them */
-  .hero-section h1 { margin-bottom: 0; font-size: 1.45rem; }
+  .hero-section h1 { margin-bottom: var(--sp-5); font-size: 1.5rem; line-height: 1.25; }
   .domains-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
   .terms-grid { grid-template-columns: 1fr 1fr; }
   .vendor-item { flex-direction: column; gap: var(--sp-1); }
