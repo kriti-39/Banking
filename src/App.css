@@ -858,6 +858,41 @@ mark.hl { background: rgba(16,185,129,.28); color: var(--text); border-radius: 3
 .bankmap-head p { color: var(--text-2); max-width: 72ch; line-height: 1.6; font-size: 0.95rem; }
 .bankmap-head strong { color: var(--text); }
 
+.mybank-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--accent-bg);
+  color: var(--accent-h);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: var(--sp-3);
+}
+.org-dept-share {
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+.bankmap-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-8) 0 var(--sp-6);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.bankmap-divider::before,
+.bankmap-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
 .org-root { display: flex; flex-direction: column; align-items: center; }
 .org-root-node {
   display: flex;

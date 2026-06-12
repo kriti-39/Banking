@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Building2, ChevronDown, ChevronUp, CornerDownRight } from "lucide-react";
+import { Building2, ChevronDown, ChevronUp, CornerDownRight, Landmark } from "lucide-react";
 import { orgRoot, departments } from "../data/bankMap";
+import { bandhanIntro, bandhanSegments } from "../data/bandhan";
 
 export default function BankMap() {
   // All departments start open so the whole map is visible; tap to collapse.
@@ -10,8 +11,60 @@ export default function BankMap() {
 
   return (
     <div className="bankmap">
+      {/* ── Your Bank: Bandhan ── */}
       <header className="bankmap-head">
-        <h1>How a Bank is Organised</h1>
+        <span className="mybank-tag"><Landmark size={13} aria-hidden="true" /> Your Bank</span>
+        <h1>Bandhan Bank — Business Segments</h1>
+        <p>{bandhanIntro}</p>
+      </header>
+
+      <ul className="org-depts" aria-label="Bandhan Bank business segments">
+        {bandhanSegments.map((s) => {
+          const isOpen = !collapsed[s.id];
+          return (
+            <li key={s.id} className="org-dept" style={{ "--dept": s.color }}>
+              <button
+                className="org-dept-head"
+                onClick={() => toggle(s.id)}
+                aria-expanded={isOpen}
+                aria-label={`${s.name} — ${s.items.length} products`}
+              >
+                <span className="org-dept-dot" aria-hidden="true" />
+                <span className="org-dept-text">
+                  <strong>{s.name}</strong>
+                  <span className="org-dept-what">{s.what}</span>
+                </span>
+                <span className="org-dept-share" style={{ color: s.color }}>{s.share}</span>
+                {isOpen
+                  ? <ChevronUp size={16} aria-hidden="true" className="org-chev" />
+                  : <ChevronDown size={16} aria-hidden="true" className="org-chev" />}
+              </button>
+
+              {isOpen && (
+                <ul className="org-verticals">
+                  {s.items.map((v) => (
+                    <li key={v.name} className="org-vertical">
+                      <CornerDownRight size={13} aria-hidden="true" className="org-v-icon" />
+                      <span className="org-v-text">
+                        <strong>{v.name}</strong>
+                        <span>{v.what}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className="bankmap-divider" role="separator" aria-hidden="true">
+        <span>How any bank is organised</span>
+      </div>
+
+      {/* ── Generic bank structure ── */}
+      <header className="bankmap-head">
+        <h1>Departments &amp; Verticals</h1>
         <p>
           The big teams (<strong>departments</strong>) and the smaller teams (<strong>verticals</strong>)
           under each — in plain English. Tap a department to open or close it.
