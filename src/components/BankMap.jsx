@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Building2, ChevronDown, ChevronUp, CornerDownRight, Landmark } from "lucide-react";
 import { orgRoot, departments } from "../data/bankMap";
 import { bandhanIntro, bandhanSegments } from "../data/bandhan";
+import { itRoot, itFunctions } from "../data/bandhanIT";
 
 export default function BankMap() {
   // All departments start open so the whole map is visible; tap to collapse.
@@ -43,6 +44,71 @@ export default function BankMap() {
               {isOpen && (
                 <ul className="org-verticals">
                   {s.items.map((v) => (
+                    <li key={v.name} className="org-vertical">
+                      <CornerDownRight size={13} aria-hidden="true" className="org-v-icon" />
+                      <span className="org-v-text">
+                        <strong>{v.name}</strong>
+                        <span>{v.what}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className="bankmap-divider" role="separator" aria-hidden="true">
+        <span>Bandhan — IT Organisation</span>
+      </div>
+
+      {/* ── Bandhan IT org (roles only) ── */}
+      <header className="bankmap-head">
+        <span className="mybank-tag"><Landmark size={13} aria-hidden="true" /> Your Bank · IT</span>
+        <h1>IT Organisation (under the CIO)</h1>
+        <p>
+          The technology teams in your bank — roles only, no names. Each <strong>Head-IT function</strong>
+          and the <strong>Lead-IT teams</strong> under it, in plain English. Tap to open or close.
+        </p>
+      </header>
+
+      <div className="org-root">
+        <div className="org-root-node">
+          <Building2 size={18} aria-hidden="true" />
+          <div>
+            <strong>{itRoot.name}</strong>
+            <span>{itRoot.what}</span>
+          </div>
+        </div>
+        <div className="org-root-stem" aria-hidden="true" />
+      </div>
+
+      <ul className="org-depts" aria-label="Bandhan IT functions">
+        {itFunctions.map((f) => {
+          const isOpen = !collapsed[f.id];
+          return (
+            <li key={f.id} className="org-dept" style={{ "--dept": f.color }}>
+              <button
+                className="org-dept-head"
+                onClick={() => toggle(f.id)}
+                aria-expanded={isOpen}
+                aria-label={`${f.name} — ${f.items.length} teams`}
+              >
+                <span className="org-dept-dot" aria-hidden="true" />
+                <span className="org-dept-text">
+                  <strong>{f.name}</strong>
+                  <span className="org-dept-what">{f.what}</span>
+                </span>
+                <span className="org-dept-count">{f.items.length}</span>
+                {isOpen
+                  ? <ChevronUp size={16} aria-hidden="true" className="org-chev" />
+                  : <ChevronDown size={16} aria-hidden="true" className="org-chev" />}
+              </button>
+
+              {isOpen && (
+                <ul className="org-verticals">
+                  {f.items.map((v) => (
                     <li key={v.name} className="org-vertical">
                       <CornerDownRight size={13} aria-hidden="true" className="org-v-icon" />
                       <span className="org-v-text">
